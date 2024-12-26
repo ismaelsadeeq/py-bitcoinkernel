@@ -53,6 +53,9 @@ cmake --install build
 > done, and you **must** install the `libbitcoinkernel` version that is
 > shipped with this library in `depend/bitcoin/`.
 
+> If you have previously installed `py-bitcoinkernel` library and are now
+> updating it, it is recommended that you compile `libbitcoinkernel` manually using the steps above.
+
 
 ## Usage
 
