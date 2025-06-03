@@ -48,8 +48,10 @@ a `ChainstateManager`:
 
 ```py
 logger = pbk.KernelLogViewer()  # no debug categories are enabled
+datadir = "/tmp/bitcoin/signet"
+blocksdir = data + "/blocks"
 with logger.temporary_categories(categories=[pbk.LogCategory.LEVELDB]):
-    chainman = pbk.load_chainman("/tmp/bitcoin/signet", pbk.ChainType.SIGNET)
+    chainman = pbk.load_chainman(datadir, blocksdir, pbk.ChainType.SIGNET)
 ```
 
 > [!IMPORTANT]

@@ -128,7 +128,7 @@ from pathlib import Path
 import pbk
 
 datadir = Path("/tmp/bitcoin/signet")
-chainman = pbk.load_chainman(datadir, pbk.ChainType.SIGNET)
+chainman = pbk.load_chainman(datadir, datadir / "blocks", pbk.ChainType.SIGNET)
 ```
 
 If you're starting from an empty data directory, you'll likely want to

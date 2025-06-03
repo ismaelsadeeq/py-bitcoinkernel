@@ -25,7 +25,9 @@ def process_block(chainman: pbk.ChainstateManager, index: pbk.BlockIndex):
     # ...
     print(f"Successfully processed block {index.height}")
 
-chainman = pbk.load_chainman("/tmp/bitcoin/signet", pbk.ChainType.SIGNET)
+datadir = "/tmp/bitcoin/signet"
+blocksdir = data + "/blocks"
+chainman = pbk.load_chainman(datadir, blocksdir, pbk.ChainType.SIGNET)
 with ThreadPoolExecutor(max_workers=MAX_WORKERS) as pool:
     for idx in pbk.block_index_generator(chainman, start=-READ_N_LAST_BLOCKS):
         pool.submit(process_block, chainman, idx)

@@ -17,7 +17,10 @@ First, we'll create a ChainstateManager and load the current chain tip:
 
 ```py
 import pbk
-chainman = pbk.load_chainman("/tmp/bitcoin/signet/", pbk.ChainType.SIGNET)
+
+datadir = "/tmp/bitcoin/signet"
+blocksdir = data + "/blocks"
+chainman = pbk.load_chainman(datadir, blocksdir, pbk.ChainType.SIGNET)
 tip = chainman.get_block_index_from_tip()
 ```
 

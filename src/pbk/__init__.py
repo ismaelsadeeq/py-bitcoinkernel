@@ -67,7 +67,7 @@ def make_context(chain_type: ChainType = ChainType.REGTEST) -> Context:
 
 
 def load_chainman(
-    datadir: Path | str, chain_type: ChainType = ChainType.REGTEST
+    datadir: Path | str, blocksdir: Path | str, chain_type: ChainType = ChainType.REGTEST
 ) -> ChainstateManager:
     """
     Load and initialize a `ChainstateManager` object, loading its
@@ -78,15 +78,16 @@ def load_chainman(
     work when only one of both programs is running at a time.
 
     @param datadir: The path of the data directory. If the directory
-        contains an existing `blocks/` and `chainstate/` directory
-        created by Bitoin Core, it will be used to load the chainstate.
-        Otherwise, a new chainstate will be created.
+        contains an existing `chainstate/` directory created by Bitoin Core,
+        it will be used to load the chainstate. Otherwise, a new chainstate will
+        be created.
+    @param blocksdir: The path of the blocksdir data directory.
     @param chain_type: The type of chain to load.
     @return: A `ChainstateManager` object.
     """
     datadir = Path(datadir)
+    blocksdir = Path(blocksdir)
     context = make_context(chain_type)
-    blocksdir = datadir / "blocks"
 
     chain_man_opts = ChainstateManagerOptions(
         context, str(datadir.absolute()), str(blocksdir.absolute())
